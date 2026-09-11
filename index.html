@@ -6,13 +6,20 @@
   <meta name="description" content="Agro SEMAG - Tecnologia, drones e soluções para o agronegócio.">
   <title>Agro SEMAG | Inicio</title>
   <link rel="stylesheet" href="css/style.css">
-  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="icon" type="image/png" href="assets/favicon.PNG">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <meta property="og:title" content="Agrosemag | Drones e Tecnologia Agrícola">
+  <meta property="og:description" content="Aplicaciones más eficientes y sostenibles para su cultivo.">
+  <meta property="og:image" content="https://agrosemag.com/assets/agrosemag-logo.png">
 </head>
 <body>
   <header class="site-header" id="site-header">
     <div class="header-container">
       <a class="brand" href="#inicio" aria-label="Agro SEMAG - Inicio">
-        <img src="assets/AGROSEMAG..PNG" alt="Agro SEMAG">
+        <img src="assets/AGROSEMAG.PNG" alt="Agro SEMAG">
       </a>
 
       <nav class="main-nav" id="main-nav" aria-label="Navegación principal">
@@ -84,13 +91,27 @@
   </header>
 
   <main id="inicio">
-    <section class="hero" aria-labelledby="hero-title">
+    <section class="hero" aria-labelledby="hero-title" tabindex="0">
 
-        <div class="hero-background">
-            <img
-                src="assets/hero-dji-t100.png"
-                alt="Drone DJI Agriculture realizando aplicação em área agrícola"
-            >
+        <!-- HERO CAROUSEL -->
+        <div class="hero-slides" aria-hidden="true">
+            <div
+                class="hero-slide active"
+                data-slide="0"
+                data-hero-image="assets/hero-drone.jpg"
+            ></div>
+
+            <div
+                class="hero-slide"
+                data-slide="1"
+                data-hero-image="assets/hero-barra.jpg"
+            ></div>
+
+            <div
+                class="hero-slide"
+                data-slide="2"
+                data-hero-image="assets/hero-pulverizador.jpg"
+            ></div>
         </div>
 
         <div class="hero-overlay"></div>
@@ -99,62 +120,27 @@
 
             <div class="hero-content">
 
-                <span
-                    class="hero-eyebrow"
-                    data-i18n="hero.eyebrow"
-                >
+                <span class="hero-eyebrow" id="hero-eyebrow">
                     TECNOLOGÍA QUE TRANSFORMA
                 </span>
 
-                <h1
-                    id="hero-title"
-                    class="hero-title"
-                    data-i18n="hero.title"
-                >
-                    Aplicaciones precisas
-                    <br>
-                    para <strong>mayor productividad</strong>
-                    <br>
+                <h1 id="hero-title" class="hero-title">
+                    Aplicaciones precisas<br>
+                    para <strong>mayor productividad</strong><br>
                     con drones <span>DJI Agriculture</span>
                 </h1>
 
-                <p
-                    class="hero-description"
-                    data-i18n="hero.description"
-                >
-                    Aplicaciones más eficientes y sostenibles para su
-                    cultivo. Menos costos, más resultados.
+                <p class="hero-description" id="hero-description">
+                    Aplicaciones más eficientes y sostenibles para su cultivo.
+                    Menos costos, más resultados.
                 </p>
 
-                <div class="hero-benefits">
-
-                    <div class="hero-benefit">
-                        <img src="assets/icons8-acima-30.png" alt="Icono de up" class="up-icon">
-                        <span data-i18n="hero.benefitPrecision">
-                            Alta precisión
-                        </span>
-                    </div>
-
-                    <div class="hero-benefit">
-                        <img src="assets/icons8-dinheiro-crescendo-30.png" alt="Icono de menos costos" class="cost-icon">
-                        <span data-i18n="hero.benefitCost">
-                            Menos costos
-                        </span>
-                    </div>
-
-                    <div class="hero-benefit">
-                        <img src="assets/icons8-particular-2-30.png" alt="Icono de seguridad" class="safety-icon">
-                        <span data-i18n="hero.benefitSafety">
-                            Seguro y sostenible
-                        </span>
-                    </div>
-
-                </div>
+                <div class="hero-benefits" id="hero-benefits"></div>
 
                 <a
                     href="#sobre-nosotros"
                     class="hero-button"
-                    data-i18n="hero.button"
+                    id="hero-button"
                 >
                     CONOCÉ MÁS
                     <span aria-hidden="true">→</span>
@@ -162,6 +148,50 @@
 
             </div>
 
+        </div>
+
+        <div class="hero-carousel-controls" aria-label="Controles del carrusel">
+            <button
+                class="hero-arrow hero-arrow-prev"
+                id="hero-prev"
+                type="button"
+                aria-label="Slide anterior"
+            >
+                ←
+            </button>
+
+            <div class="hero-dots" id="hero-dots">
+                <button
+                    class="hero-dot active"
+                    type="button"
+                    data-slide-to="0"
+                    aria-label="Slide 1"
+                    aria-current="true"
+                ></button>
+                <button
+                    class="hero-dot"
+                    type="button"
+                    data-slide-to="1"
+                    aria-label="Slide 2"
+                    aria-current="false"
+                ></button>
+                <button
+                    class="hero-dot"
+                    type="button"
+                    data-slide-to="2"
+                    aria-label="Slide 3"
+                    aria-current="false"
+                ></button>
+            </div>
+
+            <button
+                class="hero-arrow hero-arrow-next"
+                id="hero-next"
+                type="button"
+                aria-label="Siguiente slide"
+            >
+                →
+            </button>
         </div>
         
         <div class="hero-info-bar">
@@ -430,7 +460,7 @@
 
                     <div class="solution-icon">
                         <img
-                            src="assets/solutions/icons8-drone-com-câmera-60.png"
+                            src="assets/solutions/icons8-drone-com-cÔö£├│mera-60.png"
                             alt=""
                             aria-hidden="true"
                         >
@@ -452,7 +482,7 @@
 
                 <div class="solution-icon">
                     <img
-                        src="assets/solutions/icons8-transporte-de-petróleo-60.png"
+                        src="assets/solutions/icons8-transporte-de-petrÔö£Ôöéleo-60.png"
                         alt=""
                         aria-hidden="true"
                     >
@@ -496,7 +526,7 @@
 
                 <div class="solution-icon">
                     <img
-                        src="assets/solutions/icons8-configurações-60.png"
+                        src="assets/solutions/icons8-configuraÔö£┬║Ôö£├ües-60.png"
                         alt=""
                         aria-hidden="true"
                     >
@@ -628,14 +658,14 @@
 
             <a href="#" class="brand-logo" aria-label="DJI Agriculture">
                 <img
-                    src="assets/brands/dji-agriculture-logo-png_seeklogo-474353-removebg-preview.png"
+                    src="assets/brands/dji-agriculture-seeklogo.png"
                     alt="DJI Agriculture"
                 >
             </a>
 
             <a href="#" class="brand-logo" aria-label="Hikvision">
                 <img
-                    src="assets/brands/Hikvision-Logo.wine.png"
+                    src="assets/brands/hikvision-logo.jpg"
                     alt="Hikvision"
                 >
             </a>
@@ -649,7 +679,7 @@
 
             <a href="#" class="brand-logo" aria-label="Maxicom">
                 <img
-                    src="assets/brands/maxi1.png"
+                    src="assets/brands/maxi11.png"
                     alt="Maxicom"
                 >
             </a>
@@ -759,7 +789,7 @@
 
             <a href="#inicio" class="footer-logo">
                 <img
-                    src="assets/AGROSEMAG..PNG"
+                    src="assets/AGROSEMAG.PNG"
                     alt="Agro SEMAG"
                 >
             </a>
@@ -826,77 +856,77 @@
         <!-- COLUNA 3 - SERVIÇOS -->
         <div class="footer-column">
 
-            <h3 data-i18n="footer.services">
-                SERVICIOS
-            </h3>
+    <h3 data-i18n="footer.services">
+        SERVICIOS
+    </h3>
 
-            <a href="#servicios">
-                Drones Agrícolas
-            </a>
+    <a href="#servicios" data-i18n="footer.serviceDrones">
+        Drones Agrícolas
+    </a>
 
-            <a href="#servicios">
-                Tanques de Aplicación
-            </a>
+    <a href="#servicios" data-i18n="footer.serviceTanks">
+        Tanques de Aplicación
+    </a>
 
-            <a href="#servicios">
-                Pulverizadores Tradicionales
-            </a>
+    <a href="#servicios" data-i18n="footer.serviceSprayers">
+        Pulverizadores Tradicionales
+    </a>
 
-            <a href="#servicios">
-                Repuestos
-            </a>
+    <a href="#servicios" data-i18n="footer.serviceParts">
+        Repuestos
+    </a>
 
-            <a href="#servicios">
-                Monitores Agrícolas
-            </a>
+    <a href="#servicios" data-i18n="footer.serviceMonitors">
+        Monitores Agrícolas
+    </a>
 
-            <a href="#servicios">
-                Señal de Precisión
-            </a>
+    <a href="#servicios" data-i18n="footer.serviceSignal">
+        Señal de Precisión
+    </a>
 
-            <a href="#servicios">
-                Asistencia Técnica
-            </a>
+    <a href="#servicios" data-i18n="footer.serviceSupport">
+        Asistencia Técnica
+    </a>
 
-        </div>
+</div>
 
 
         <!-- COLUNA 4 - PRODUTOS -->
         <div class="footer-column">
 
-            <h3 data-i18n="footer.products">
-                SERVICIOS
-            </h3>
+    <h3 data-i18n="footer.products">
+        PRODUCTOS
+    </h3>
 
-            <a href="#productos">
-                Drones y Accesorios
-            </a>
+    <a href="#productos" data-i18n="footer.productDrones">
+        Drones y Accesorios
+    </a>
 
-            <a href="#productos">
-                Tanques e Implementos
-            </a>
+    <a href="#productos" data-i18n="footer.productTanks">
+        Tanques e Implementos
+    </a>
 
-            <a href="#productos">
-                Pulverizadores
-            </a>
+    <a href="#productos" data-i18n="footer.productSprayers">
+        Pulverizadores
+    </a>
 
-            <a href="#productos">
-                Repuestos
-            </a>
+    <a href="#productos" data-i18n="footer.productParts">
+        Repuestos
+    </a>
 
-            <a href="#productos">
-                Monitores
-            </a>
+    <a href="#productos" data-i18n="footer.productMonitors">
+        Monitores
+    </a>
 
-            <a href="#productos">
-                Accesorios
-            </a>
+    <a href="#productos" data-i18n="footer.productAccessories">
+        Accesorios
+    </a>
 
-            <a href="#productos">
-                Consumibles
-            </a>
+    <a href="#productos" data-i18n="footer.productConsumables">
+        Consumibles
+    </a>
 
-        </div>
+</div>
 
 
         <!-- COLUNA 5 - CONTATO -->
@@ -962,18 +992,18 @@
     </div>
 
 
-    <!-- BOTÃO VOLTAR AO TOPO -->
-    <button
-        class="back-to-top"
-        id="back-to-top"
-        type="button"
-        aria-label="Volver al inicio"
-        title="Volver al inicio"
-    >
-        ↑
-    </button>
 
 </footer>
+
+<button
+    class="back-to-top"
+    id="back-to-top"
+    type="button"
+    aria-label="Volver al inicio"
+    title="Volver al inicio"
+>
+    <img src="assets/icons8-acima-branco-2-30.png" alt="acima-branco">
+</button>
 
   <script src="js/script.js"></script>
 </body>

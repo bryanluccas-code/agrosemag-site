@@ -50,6 +50,7 @@ const translations = {
         "nav.home": "Inicio",
         "nav.about": "Sobre nosotros",
         "nav.services": "Servicios",
+        "nav.products": "Productos",
         "nav.gallery": "Galería",
         "nav.contact": "Contacto",
         "nav.quote": "COTIZAR AHORA",
@@ -118,6 +119,21 @@ const translations = {
 "footer.products": "PRODUCTOS",
 "footer.contact": "CONTACTO",
 
+"footer.serviceDrones": "Drones Agrícolas",
+"footer.serviceTanks": "Tanques de Aplicación",
+"footer.serviceSprayers": "Pulverizadores Tradicionales",
+"footer.serviceParts": "Repuestos",
+"footer.serviceMonitors": "Monitores Agrícolas",
+"footer.serviceSignal": "Señal de Precisión",
+"footer.serviceSupport": "Asistencia Técnica",
+
+"footer.productDrones": "Drones y Accesorios",
+"footer.productTanks": "Tanques e Implementos",
+"footer.productSprayers": "Pulverizadores",
+"footer.productParts": "Repuestos",
+"footer.productMonitors": "Monitores",
+"footer.productAccessories": "Accesorios",
+"footer.productConsumables": "Consumibles",
 "footer.address": "Santa Rita, Alto Paraná - Py",
 "footer.hours": "Lun a Vie: 07:00 - 17:00<br>Sáb: 07:00 - 12:00",
 
@@ -130,6 +146,7 @@ const translations = {
         "nav.about": "Sobre nós",
         "nav.services": "Serviços",
         "nav.gallery": "Galeria",
+        "nav.products": "Produtos",
         "nav.contact": "Contato",
         "nav.quote": "CONTATAR",
         "page.title": "Agro SEMAG - Início",
@@ -196,7 +213,21 @@ const translations = {
 "footer.services": "SERVIÇOS",
 "footer.products": "PRODUTOS",
 "footer.contact": "CONTATO",
+"footer.serviceDrones": "Drones Agrícolas",
+"footer.serviceTanks": "Tanques de Aplicação",
+"footer.serviceSprayers": "Pulverizadores Tradicionais",
+"footer.serviceParts": "Peças de Reposição",
+"footer.serviceMonitors": "Monitores Agrícolas",
+"footer.serviceSignal": "Sinal de Precisão",
+"footer.serviceSupport": "Assistência Técnica",
 
+"footer.productDrones": "Drones e Acessórios",
+"footer.productTanks": "Tanques e Implementos",
+"footer.productSprayers": "Pulverizadores",
+"footer.productParts": "Peças de Reposição",
+"footer.productMonitors": "Monitores",
+"footer.productAccessories": "Acessórios",
+"footer.productConsumables": "Consumíveis",
 "footer.address": "Santa Rita, Alto Paraná - PY",
 "footer.hours": "Seg a Sex: 07:00 - 17:00<br>Sáb: 07:00 - 12:00",
 
@@ -210,6 +241,7 @@ const translations = {
         "nav.about": "About us",
         "nav.services": "Services",
         "nav.gallery": "Gallery",
+        "nav.products": "Products",
         "nav.contact": "Contact",
         "nav.quote": "GET A QUOTE",
         "page.title": "Agro SEMAG - Home",
@@ -276,6 +308,21 @@ const translations = {
 "footer.services": "SERVICES",
 "footer.products": "PRODUCTS",
 "footer.contact": "CONTACT",
+"footer.serviceDrones": "Agricultural Drones",
+"footer.serviceTanks": "Application Tanks",
+"footer.serviceSprayers": "Traditional Sprayers",
+"footer.serviceParts": "Replacement Parts",
+"footer.serviceMonitors": "Agricultural Monitors",
+"footer.serviceSignal": "Precision Signal",
+"footer.serviceSupport": "Technical Assistance",
+
+"footer.productDrones": "Drones & Accessories",
+"footer.productTanks": "Tanks & Implements",
+"footer.productSprayers": "Sprayers",
+"footer.productParts": "Replacement Parts",
+"footer.productMonitors": "Monitors",
+"footer.productAccessories": "Accessories",
+"footer.productConsumables": "Consumables",
 
 "footer.address": "Santa Rita, Alto Paraná - PY",
 "footer.hours": "Mon to Fri: 07:00 - 17:00<br>Sat: 07:00 - 12:00",
@@ -325,6 +372,10 @@ languageButtons.forEach((button) => {
         const language = button.dataset.language;
 
         changeLanguage(language);
+
+        window.dispatchEvent(
+            new CustomEvent("languageChanged")
+        );
     });
 });
 
@@ -349,3 +400,316 @@ backToTopButton.addEventListener("click", () => {
         behavior: "smooth"
     });
 });
+
+/* =========================================================
+   HERO - CARROSSEL
+   ========================================================= */
+
+const heroSlides = document.querySelectorAll(".hero-slide");
+const heroDots = document.querySelectorAll(".hero-dot");
+
+const heroPrevButton = document.getElementById("hero-prev");
+const heroNextButton = document.getElementById("hero-next");
+
+const heroEyebrow = document.getElementById("hero-eyebrow");
+const heroTitle = document.getElementById("hero-title");
+const heroDescription = document.getElementById("hero-description");
+const heroBenefits = document.getElementById("hero-benefits");
+const heroButton = document.getElementById("hero-button");
+
+let currentHeroSlide = 0;
+let heroInterval = null;
+let heroPaused = false;
+
+const heroCarouselContent = {
+
+    es: [
+        {
+            eyebrow: "TECNOLOGÍA QUE TRANSFORMA",
+            title: "Aplicaciones precisas<br>para <strong>mayor productividad</strong><br>con drones <span>DJI Agriculture</span>",
+            description: "Aplicaciones más eficientes y sostenibles para su cultivo. Menos costos, más resultados.",
+            benefits: [
+            { text: "Alta precisión", icon: "assets/icons8-acima-30.png" },
+            { text: "Menos costos", icon: "assets/icons8-dinheiro-crescendo-30.png" },
+            { text: "Seguro y sostenible", icon: "assets/icons8-particular-2-30.png" }
+            ],
+            button: "CONOCÉ MÁS"
+        },
+        {
+            eyebrow: "TECNOLOGÍA PARA EL CAMPO",
+            title: "<strong>Pulverización eficiente</strong><br>para una agricultura<br><span>más productiva</span>",
+            description: "Equipos especializados para una aplicación uniforme, precisa y eficiente en sus cultivos.",
+            benefits: [
+                { text: "Mayor cobertura", icon: "assets/icons8-crescer-30.png" },
+                { text: "Menos insumos", icon: "assets/icons8-loss-30.png" },
+                { text: "Aplicación uniforme", icon: "assets/icons8-segurança-verificada-30.png" }
+            ],
+            button: "CONOCÉ MÁS"
+        },
+        {
+            eyebrow: "PRECISIÓN QUE GENERA RESULTADOS",
+            title: "Barras de aplicación<br>para una <strong>mayor eficiencia</strong><br>en el campo",
+            description: "Soluciones diseñadas para mejorar la distribución y el rendimiento de cada aplicación.",
+            benefits: [
+                { text: "Mayor precisión", icon: "assets/icons8-precisão-30.png" },
+                { text: "Mejor distribución", icon: "assets/icons8-distribuição-30.png" },
+                { text: "Más rendimiento", icon: "assets/icons8-financial-30.png" }
+            ],
+            button: "CONOCÉ MÁS"
+        }
+    ],
+
+    pt: [
+        {
+            eyebrow: "TECNOLOGIA QUE TRANSFORMA",
+            title: "Aplicações precisas<br>para <strong>maior produtividade</strong><br>com drones <span>DJI Agriculture</span>",
+            description: "Aplicações mais eficientes e sustentáveis para seu cultivo. Menores custos, melhores resultados.",
+            benefits: [
+            { text: "Alta precisão", icon: "assets/icons8-acima-30.png" },
+            { text: "Menores custos", icon: "assets/icons8-dinheiro-crescendo-30.png" },
+            { text: "Seguro e sustentável", icon: "assets/icons8-particular-2-30.png" }
+            ],
+            button: "CONHEÇA MAIS"
+        },
+        {
+            eyebrow: "TECNOLOGIA PARA O CAMPO",
+            title: "<strong>Pulverização eficiente</strong><br>para uma agricultura<br><span>mais produtiva</span>",
+            description: "Equipamentos especializados para uma aplicação uniforme, precisa e eficiente em suas culturas.",
+            benefits: [
+                { text: "Maior cobertura", icon: "assets/icons8-crescer-30.png" },
+                { text: "Menor uso de insumos", icon: "assets/icons8-loss-30.png" },
+                { text: "Aplicação uniforme", icon: "assets/icons8-segurança-verificada-30.png" }
+            ],
+            button: "CONHEÇA MAIS"
+        },
+        {
+            eyebrow: "PRECISÃO QUE GERA RESULTADOS",
+            title: "Barras de aplicação<br>para <strong>maior eficiência</strong><br>no campo",
+            description: "Soluções desenvolvidas para melhorar a distribuição e o desempenho de cada aplicação.",
+            benefits: [
+                { text: "Maior precisão", icon: "assets/icons8-precisão-30.png" },
+                { text: "Melhor distribuição", icon: "assets/icons8-distribuição-30.png" },
+                { text: "Mais rendimento", icon: "assets/icons8-financial-30.png" }
+            ],
+            button: "CONHEÇA MAIS"
+        }
+    ],
+
+    en: [
+        {
+            eyebrow: "TECHNOLOGY THAT TRANSFORMS",
+            title: "Precise applications<br>for <strong>greater productivity</strong><br>with <span>DJI Agriculture</span> drones",
+            description: "More efficient and sustainable applications for your crops. Lower costs, better results.",
+            benefits: [
+            { text: "High precision", icon: "assets/icons8-acima-30.png" },
+            { text: "Lower costs", icon: "assets/icons8-dinheiro-crescendo-30.png" },
+            { text: "Safe and sustainable", icon: "assets/icons8-particular-2-30.png" }
+            ],
+            button: "LEARN MORE"
+        },
+        {
+            eyebrow: "TECHNOLOGY FOR THE FIELD",
+            title: "<strong>Efficient spraying</strong><br>for a more<br><span>productive agriculture</span>",
+            description: "Specialized equipment for uniform, precise and efficient crop applications.",
+            benefits: [
+                { text: "Greater coverage", icon: "assets/icons8-crescer-30.png" },
+                { text: "Lower input use", icon: "assets/icons8-loss-30.png" },
+                { text: "Uniform application", icon: "assets/icons8-segurança-verificada-30.png" }
+            ],
+            button: "LEARN MORE"
+        },
+        {
+            eyebrow: "PRECISION THAT DELIVERS RESULTS",
+            title: "Application booms<br>for <strong>greater efficiency</strong><br>in the field",
+            description: "Solutions designed to improve distribution and performance in every application.",
+            benefits: [
+                { text: "Higher precision", icon: "assets/icons8-precisão-30.png" },
+                { text: "Better distribution", icon: "assets/icons8-distribuição-30.png" },
+                { text: "More efficiency", icon: "assets/icons8-financial-30.png" }
+            ],
+            button: "LEARN MORE"
+        }
+    ]
+};
+
+function getCurrentLanguage() {
+    const savedLanguage =
+        localStorage.getItem("agrosemag-language") || "es";
+
+    return heroCarouselContent[savedLanguage]
+        ? savedLanguage
+        : "es";
+}
+
+function preloadHeroImages() {
+    heroSlides.forEach((slideElement) => {
+        const image = slideElement.dataset.heroImage;
+
+        if (!image) {
+            return;
+        }
+
+        const preloadedImage = new Image();
+        preloadedImage.src = image;
+
+        slideElement.style.backgroundImage = `url("${image}")`;
+    });
+}
+
+function renderHeroSlide(index) {
+    const language = getCurrentLanguage();
+    const slides = heroCarouselContent[language];
+
+    if (!slides || !slides[index]) {
+        return;
+    }
+
+    const slide = slides[index];
+
+    heroEyebrow.textContent = slide.eyebrow;
+    heroTitle.innerHTML = slide.title;
+    heroDescription.textContent = slide.description;
+
+    heroButton.innerHTML =
+        `${slide.button} <span aria-hidden="true">→</span>`;
+
+    heroBenefits.innerHTML = "";
+
+    slide.benefits.forEach((benefit) => {
+        const benefitElement = document.createElement("div");
+        benefitElement.className = "hero-benefit";
+
+        // Cria a tag da imagem
+        const icon = document.createElement("img");
+        icon.className = "hero-benefit-icon";
+        
+        // Puxa o ícone específico que configuramos lá em cima
+        icon.src = benefit.icon; 
+        icon.alt = "";
+        icon.setAttribute("aria-hidden", "true");
+
+        // Cria o texto
+        const text = document.createElement("span");
+        
+        // Puxa o texto específico
+        text.textContent = benefit.text; 
+
+        benefitElement.append(icon, text);
+        heroBenefits.appendChild(benefitElement);
+    });
+    heroSlides.forEach((slideElement, slideIndex) => {
+        slideElement.classList.toggle(
+            "active",
+            slideIndex === index
+        );
+    });
+
+    heroDots.forEach((dot, dotIndex) => {
+        const active = dotIndex === index;
+
+        dot.classList.toggle("active", active);
+        dot.setAttribute("aria-current", active ? "true" : "false");
+    });
+
+    currentHeroSlide = index;
+}
+
+function goToHeroSlide(index) {
+    if (heroSlides.length === 0) {
+        return;
+    }
+
+    if (index < 0) {
+        index = heroSlides.length - 1;
+    }
+
+    if (index >= heroSlides.length) {
+        index = 0;
+    }
+
+    renderHeroSlide(index);
+}
+
+function stopHeroAutoplay() {
+    if (heroInterval) {
+        clearInterval(heroInterval);
+        heroInterval = null;
+    }
+}
+
+function startHeroAutoplay() {
+    stopHeroAutoplay();
+
+    if (heroPaused || heroSlides.length < 2) {
+        return;
+    }
+
+    heroInterval = setInterval(() => {
+        goToHeroSlide(currentHeroSlide + 1);
+    }, 6000);
+}
+
+heroPrevButton?.addEventListener("click", () => {
+    goToHeroSlide(currentHeroSlide - 1);
+    startHeroAutoplay();
+});
+
+heroNextButton?.addEventListener("click", () => {
+    goToHeroSlide(currentHeroSlide + 1);
+    startHeroAutoplay();
+});
+
+heroDots.forEach((dot) => {
+    dot.addEventListener("click", () => {
+        goToHeroSlide(Number(dot.dataset.slideTo));
+        startHeroAutoplay();
+    });
+});
+
+const heroElement = document.querySelector(".hero");
+
+heroElement?.addEventListener("mouseenter", () => {
+    heroPaused = true;
+    stopHeroAutoplay();
+});
+
+heroElement?.addEventListener("mouseleave", () => {
+    heroPaused = false;
+    startHeroAutoplay();
+});
+
+const heroSection = document.querySelector('.hero');
+
+// Ouve o teclado APENAS se o mouse estiver sobre o Hero 
+// ou se o foco do teclado estiver dentro do Hero
+heroSection?.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowLeft") {
+        goToHeroSlide(currentHeroSlide - 1);
+        startHeroAutoplay();
+    }
+
+    if (event.key === "ArrowRight") {
+        goToHeroSlide(currentHeroSlide + 1);
+        startHeroAutoplay();
+    }
+});
+
+// Para garantir que a navegação não congele abas inativas do navegador,
+// vamos pausar o carrossel se o usuário mudar de aba.
+document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+        stopHeroAutoplay();
+    } else {
+        startHeroAutoplay();
+    }
+});
+
+window.addEventListener("languageChanged", () => {
+    renderHeroSlide(currentHeroSlide);
+    startHeroAutoplay();
+});
+
+preloadHeroImages();
+renderHeroSlide(0);
+startHeroAutoplay();
+
